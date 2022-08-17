@@ -14,10 +14,6 @@ spec:
       values: |
         service:
           type: LoadBalancer
-        resources:
-          requests:
-            cpu: "150m"
-            memory: "256Mi"
   project: default
   syncPolicy:
     automated:
