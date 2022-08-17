@@ -10,12 +10,6 @@ spec:
     repoURL: 'https://charts.securecodebox.io/'
     targetRevision: 3.14.3
     chart: juice-shop
-    helm:
-      values: |
-        resources:
-          requests:
-            cpu: "150m"
-            memory: "256Mi"
   project: default
   syncPolicy:
     automated:
