@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+  name: app-crm
+  creationTimestamp: "2022-08-08T16:25:20Z"
+spec:
+  rules:
+  - host: oshricowsay.no-ip.org
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: juice-shop
+            port: 
+              number: 3000
+  tls:
+  - hosts:
+    - oshricowsay.no-ip.org
+    secretName: nginx-tls
