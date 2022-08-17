@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app-of-apps
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: argocd
+  source:
+    path: apps
+    repoURL: 'git@github.com:oshriza/juice-shop-monitoring.git'
+    targetRevision: HEAD
+  project: default
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
